@@ -1,4 +1,4 @@
-const { src, dest, watch } = require('gulp');
+const { src, dest, watch, series} = require('gulp');
 const ts = require('gulp-typescript');
 
 const tsProject = ts.createProject('tsconfig.json');
@@ -8,10 +8,14 @@ const build = () =>
     .pipe(tsProject())
     .pipe(dest('dist'));
 
+const moveReactBuild = () =>
+  src('./react-frontend/build/**/*')
+    .pipe(dest('dist/build'));
+
 const watchFiles = () =>
   watch('./src/**/*.ts', build);
 
 module.exports = {
-  build,
+  build: series(build, moveReactBuild),
   watch: watchFiles
 }
