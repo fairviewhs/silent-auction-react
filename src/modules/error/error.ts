@@ -10,5 +10,8 @@ export default (error: any, req: Request, res: Response, next: NextFunction) => 
   res
     .status(boomError.output.statusCode)
     .header(boomError.output.headers)
-    .json(boomError.output.payload);
+    .json({
+      ...boomError.output.payload,
+      success: false
+    });
 }
