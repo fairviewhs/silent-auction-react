@@ -1,0 +1,29 @@
+.results {
+    border: 1px solid #aaa;
+    border-radius: .5rem;
+    text-align: left;
+}
+
+.resultsHeader,
+.resultsRow {
+    border-bottom: 1px solid #aaa;
+    display: flex;
+    padding: .5rem
+}
+
+.resultsRow:last-child {
+    border: none;
+}
+
+.resultsHeader {
+    background: #ddd;
+    font-weight: bold;
+}
+
+.resultsBundle,
+.resultsBid,
+.resultsName,
+.resultsEmail,
+.resultsPhone {
+    flex: 1;
+}

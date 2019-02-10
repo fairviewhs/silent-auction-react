@@ -26,9 +26,15 @@ body {
 }
 
 .appTitle {
+    align-items: center;
+    display: flex;
     font-size: 2.5rem;
-    margin: 0 0 2rem 0;
+    margin: 1rem 0 2rem 0;
     text-align: left;
+}
+
+.appTitle img {
+    margin: 0 1rem 0 0;
 }
 
 .footer {
