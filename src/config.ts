@@ -13,6 +13,12 @@ const config = convict({
       format: String,
       default: 'jwt_token_secret',
       env: 'JWT_SECRET'
+    },
+    expireIn: {
+      doc: 'How long the jwt token lasts',
+      format: String,
+      default: '24h',
+      env: 'JWT_TIME'
     }
   }
 });
