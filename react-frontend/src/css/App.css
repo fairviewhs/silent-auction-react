@@ -1,5 +1,6 @@
 html,
 body {
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -11,6 +12,11 @@ a {
 
 a:hover {
     color: #8e092d;
+}
+
+input,
+textarea {
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
