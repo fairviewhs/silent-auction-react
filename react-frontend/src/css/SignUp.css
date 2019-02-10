@@ -1,0 +1,53 @@
+.signUp {
+    display: flex;
+}
+
+.signUpInfo {
+    flex: 1;
+    margin: 0 1rem 0 0;
+    text-align: left;
+}
+
+.signUpForm {
+    border-radius: .5rem;
+    box-shadow: 1px 1px 8px 1px #aaa;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    justify-content: flex-start;
+    padding: 1.5rem;
+    text-align: left;
+    width: 25rem;
+}
+
+.signUpForm h2 {
+    margin: 0 0 1rem 0;
+}
+
+.signUpForm input[type="text"],
+.signUpForm input[type="email"],
+.signUpForm input[type="tel"] {
+    border: 1px solid #aaa;
+    border-radius: .5rem;
+    flex: 1;
+    font-size: 1.2rem;
+    margin: 0 0 .5rem 0;
+    padding: .5rem;
+}
+
+.signUpForm input[type="submit"] {
+    background: #a81f44;
+    border: none;
+    border-radius: .5rem;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all .5s ease;
+}
+
+.signUpForm input[type="submit"]:hover {
+    background: #8e092d;
+    cursor: pointer;
+}
