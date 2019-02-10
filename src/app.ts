@@ -9,6 +9,7 @@ import jwtStrategy from './modules/auth/passport';
 import error from './modules/error/error';
 import auth from './modules/routes/auth';
 import bids from './modules/routes/bid';
+import auctions from './modules/routes/auctions';
 
 // Mongoose Setup
 mongoose.connect('mongodb://localhost:27017/silent-auction', { useNewUrlParser: true });
@@ -27,7 +28,7 @@ app.use(passport.initialize());
 const apiRoute = express.Router();
 
 apiRoute.use('/auth', auth);
-// apiRoute.use('/auction', auctions);
+apiRoute.use('/auction', auctions);
 apiRoute.use('/bid', bids);
 // apiRoute.use('/donation', donations);
 // apiRoute.use('/item', items);
