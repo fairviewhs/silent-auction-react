@@ -12,8 +12,15 @@ const dto = joi.object({
   name: joi.string().required(),
   image: joi.string().required(),
   start_price: joi.number().required(),
-  description: joi.string().required()
+  description: joi.string().required(),
+  start_time: joi.date().required(),
+  end_time: joi.date().required(),
 }).required()
+
+router.get('/', asyncMid(async (req, res) => {
+  const auctions = await Auction.find().exec();
+  res.json(auctions);
+}))
 
 router.get('/:id', asyncMid(async (req, res) => {
     const id = req.params.id;
@@ -25,20 +32,9 @@ router.get('/:id', asyncMid(async (req, res) => {
     });
 }));
 
-router.post('/create', validate(dto), asyncMid(async (req, res) => {
-    let auction = new Auction;
-    const {name, image, start_price, description, start_time, end_time} = req.body;
-    auction.name = name;
-    auction.image = image;
-    auction.start_price = start_price;
-    auction.description = description;
-    auction.start_time = start_time;
-    auction.end_time = end_time;
-
-    await auction.save(err => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true });
-    });
+router.post('/', validate(dto), asyncMid(async (req, res) => {
+  const auction = await Auction.create(req.body);
+  res.json({ success: true, data: auction });
 }));
 
 router.post('/edit/:id', validate(dto), asyncMid(async (req, res) => {
