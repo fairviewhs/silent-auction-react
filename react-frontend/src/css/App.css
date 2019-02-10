@@ -39,8 +39,36 @@ body {
     text-align: left;
 }
 
+.appTitleL {
+    align-items: center;
+    display: inline-flex;
+}
+
+.appTitleR {
+    align-items: center;
+    display: inline-flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
 .appTitle img {
     margin: 0 1rem 0 0;
+}
+
+.appSignOut {
+    border: 1px solid #a81f44;
+    border-radius: .5rem;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: .3rem;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+.appSignOut:hover {
+    background: #a81f44;
+    color: #fff;
 }
 
 .footer {

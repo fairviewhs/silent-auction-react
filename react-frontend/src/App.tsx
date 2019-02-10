@@ -11,8 +11,13 @@ class App extends Component {
     return (
       <div className="app">
         <h1 className="appTitle">
-          <img src={logo}/>
-          Silent Auction
+          <div className="appTitleL">
+            <img src={logo}/>
+            Silent Auction
+          </div>
+          <div className="appTitleR">
+            <a className="appSignOut" href="logouturl">Sign Out</a>
+          </div>
         </h1>
         <SignUp/>
         <Auction/>
