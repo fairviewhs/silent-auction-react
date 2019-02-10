@@ -7,23 +7,12 @@ const config = convict({
     default: 3001,
     env: 'PORT'
   },
-  apiRoot: {
-    doc: 'The root uri for the api',
-    format: String,
-    default: 'http://localhost:3001'
-  },
-  secrets: {
-    mail: {
-      user: {
-        doc: 'The username for the gmail mail transport',
-        format: String,
-        default: 'silentauction'
-      },
-      pass: {
-        doc: 'The password for the gmail mail transport',
-        format: String,
-        default: 'XXXXXXXXXXXX'
-      }
+  jwt: {
+    secret: {
+      doc: 'The jwt token secret for authenticating users',
+      format: String,
+      default: 'jwt_token_secret',
+      env: 'JWT_SECRET'
     }
   }
 });
