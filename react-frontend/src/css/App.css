@@ -1,0 +1,50 @@
+html,
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #a81f44;
+    transition: all .3s ease;
+}
+
+a:hover {
+    color: #8e092d;
+}
+
+input,
+textarea {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.app {
+    margin: 0 2rem;
+    max-width: 1300px;
+}
+
+.appTitle {
+    align-items: center;
+    display: flex;
+    font-size: 2.5rem;
+    margin: 1rem 0 2rem 0;
+    text-align: left;
+}
+
+.appTitle img {
+    margin: 0 1rem 0 0;
+}
+
+.footer {
+    border-top: 1px solid #aaa;
+    margin: 2rem 0 0 0;
+    padding: 2rem 0;
+}

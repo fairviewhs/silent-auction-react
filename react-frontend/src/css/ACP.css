@@ -1,0 +1,43 @@
+.ACPAuctionForm {
+    border-radius: .5rem;
+    box-shadow: 1px 1px 8px 1px #aaa;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    justify-content: flex-start;
+    margin: 0 .5rem .5rem .5rem;
+    padding: 1rem;
+    text-align: left;
+    width: 15rem;
+}
+
+.ACPAuctionForm input[type="text"],
+.ACPAuctionForm input[type="number"],
+.ACPAuctionForm textarea {
+    border: 1px solid #aaa;
+    border-radius: .3rem;
+    flex: 1;
+    font-size: .9rem;
+    margin: 0 0 .5rem 0;
+    padding: .2rem;
+}
+
+.ACPAuctionForm textarea {
+    height: 3rem;
+}
+
+.ACPAuctionForm input[type="submit"] {
+    background: #a81f44;
+    border: none;
+    border-radius: .3rem;
+    color: #fff;
+    font-size: .9rem;
+    padding: .5rem;
+    transition: all .5s ease;
+}
+
+.ACPAuctionForm input[type="submit"]:hover {
+    background: #8e092d;
+    cursor: pointer;
+}

@@ -1,0 +1,73 @@
+.auction {
+    border-radius: .5rem;
+    box-shadow: 1px 1px 8px 1px #aaa;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 1rem .5rem 1rem;
+    padding: 1.5rem;
+    text-align: left;
+    width: 20rem;
+}
+
+.auctionName {
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.auctionImg {
+    align-self: center;
+    display: inline-flex;
+    max-height: 8rem;
+    max-width: 100%;
+}
+
+.auctionHighest,
+.auctionStart {
+    display: flex;
+}
+
+.auctionHighestVal,
+.auctionStartVal {
+    margin: 0 0 0 .5rem;
+}
+
+.auctionHighest {
+    font-weight: bold;
+}
+
+.auctionHighestVal {
+    color: #a81f44;
+}
+
+.auctionForm {
+    box-sizing: border-box;
+    display: flex;
+    margin: 1rem 0 0 0;
+}
+
+.auctionForm input[type="number"] {
+    border: 1px solid #aaa;
+    border-radius: .5rem 0 0 .5rem;
+    flex: 1;
+    font-size: 1.2rem;
+    padding: .5rem;
+    width: 0;
+}
+
+.auctionForm input[type="submit"] {
+    background: #a81f44;
+    border: none;
+    border-radius: 0 .5rem .5rem 0;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+    transition: all .5s ease;
+}
+
+.auctionForm input[type="submit"]:hover {
+    background: #8e092d;
+    cursor: pointer;
+}
