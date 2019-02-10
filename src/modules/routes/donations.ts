@@ -43,8 +43,8 @@ router.post('/:auctionId', validate(dto), asyncMid(async (req, res) => {
   });
 }));
 
-router.delete('/:id', asyncMid(async (req, res) => {
-  Donation.updateOne()
-}))
+// router.delete('/:id', asyncMid(async (req, res) => {
+//   Donation.updateOne()
+// }))
 
 export default router;

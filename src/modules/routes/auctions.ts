@@ -25,7 +25,7 @@ router.get('/:id', asyncMid(async (req, res) => {
     });
 }));
 
-router.post('/create', validate(dto), asyncMid(async (req, res) => {
+router.post('/create', validate(dto), (req, res) => {
     let auction = new Auction;
     const {name, image, start_price, description, start_time, end_time} = req.body;
     auction.name = name;
@@ -35,22 +35,31 @@ router.post('/create', validate(dto), asyncMid(async (req, res) => {
     auction.start_time = start_time;
     auction.end_time = end_time;
 
-    await auction.save(err => {
+    auction.save(err => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });
     });
-}));
+});
 
 router.post('/edit/:id', validate(dto), asyncMid(async (req, res) => {
     const id = req.params.id;
-    const update = req.body.update;
+    const {name, image, start_price, description, start_time, end_time} = req.body;
+    const update = {
+        name: name,
+        image: image,
+        start_price: start_price,
+        description: description,
+        start_time: start_time,
+        end_time: end_time
+    };
     await Auction.findOneAndUpdate({_id: id}, update).exec();
 }));
 
-router.post('/delete/:id', validate(dto), asyncMid(async (req, res) => {
+router.post('/delete/:id', asyncMid(async (req, res) => {
     const id = req.params.id;
-    const update = req.body.update;
-    await Auction.findOneAndDelete({_id: id}, update).exec();
+    const auction = Auction.findOne({_id: id}).exec();
+    if (!auction) throw boom.badRequest('Auction does not exist.');
+    await Auction.findOneAndDelete({_id: id}).exec();
 }));
 
 export default router;
