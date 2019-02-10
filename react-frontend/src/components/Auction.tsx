@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import '../css/Auction.css';
+import BidForm from './BidForm';
 
-class Auction extends Component {
+export interface AuctionProps {
+  startingPrice: number;
+  highestPrice: number;
+  enteredPrice: number;
+  canBid: boolean;
+  onChange: (bidPrice: number) => any;
+  onSubmit: () => any;
+}
+
+class Auction extends Component<AuctionProps> {
+
+  formatMoney = (money: number) => {
+    return `$${money.toFixed(2)}`;
+  }
+
   render() {
+    const { startingPrice, highestPrice, enteredPrice, canBid, onChange, onSubmit } = this.props;
     return (
       <div className="auction">
         <h2 className="auctionName">Bundle Name</h2>
@@ -13,19 +29,23 @@ class Auction extends Component {
         <div className="auctionStart">
             Starting Price:
             <div className="auctionStartVal">
-                XXX
+                {this.formatMoney(startingPrice)}
             </div>
         </div>
         <div className="auctionHighest">
             Highest Bid:
             <div className="auctionHighestVal">
-                XXX
+                {this.formatMoney(highestPrice)}
             </div>
         </div>
-        <form className="auctionForm">
-            <input type="number" placeholder="Make a bid"/>
-            <input type="submit" value="Bid"/>
-        </form>
+        {
+          canBid &&
+          <BidForm 
+            onChange={onChange}
+            onSubmit={onSubmit}
+            value={enteredPrice}
+          />
+        }
       </div>
     );
   }
