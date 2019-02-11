@@ -81,7 +81,7 @@ class App extends Component<AppProps, AppState> {
         ...prevAuctions,
         [auction.name]: {
           _id,
-          enteredPrice: 0,
+          enteredPrice: startingPrice + 1,
           ...this.state.auctions[auction.name],
           highestPrice,
           name,
