@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import '../css/Auction.css';
 import BidForm from './BidForm';
+import { Moment } from 'moment';
+import { AuctionType } from '../App';
 
-export interface AuctionProps {
-  startingPrice: number;
+export interface AuctionProps extends AuctionType {
   highestPrice: number;
   enteredPrice: number;
   canBid: boolean;
@@ -18,13 +19,13 @@ class Auction extends Component<AuctionProps> {
   }
 
   render() {
-    const { startingPrice, highestPrice, enteredPrice, canBid, onChange, onSubmit } = this.props;
+    const { name, image, description, startTime, endTime, startingPrice, highestPrice, enteredPrice, canBid, onChange, onSubmit } = this.props;
     return (
       <div className="auction">
-        <h2 className="auctionName">Bundle Name</h2>
-        <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" className="auctionImg"/>
+        <h2 className="auctionName">{name}</h2>
+        <img src={image} className="auctionImg"/>
         <p className="auctionDesc">
-          Treat yourself to some well-deserved relaxation and happiness after all your hard work! Indulge in a gift basket of chocolates and bath salts from Premier Commercial Interiors, then get a refreshing acupuncture session from Inner Path Acupuncture. Try an hour of deeply calming flotation therapy at Isolate to recover from any stress in your life. 
+          {description}
         </p>
         <div className="auctionStart">
             Starting Price:
