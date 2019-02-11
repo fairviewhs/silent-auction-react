@@ -19,7 +19,7 @@ class Auction extends Component<AuctionProps> {
   }
 
   render() {
-    const { name, image, description, startTime, endTime, startingPrice, highestPrice, enteredPrice, canBid, onChange, onSubmit } = this.props;
+    const { name, description, startTime, endTime, startingPrice, highestPrice, enteredPrice, canBid, onChange, onSubmit } = this.props;
     return (
       <div className="auction">
         <div className="auctionL">

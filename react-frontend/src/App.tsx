@@ -16,7 +16,6 @@ export interface AppProps {
 
 export type AuctionType = {
   name: string;
-  image: string;
   description: string;
   startingPrice: number;
   startTime: Moment;
@@ -56,7 +55,6 @@ class App extends Component<AppProps, AppState> {
     },
     newAuction: {
       name: '',
-      image: '',
       startingPrice: 0,
       description: '',
       startTime: '',
@@ -73,7 +71,6 @@ class App extends Component<AppProps, AppState> {
       const {
         _id,
         name,
-        image,
         start_price: startingPrice,
         description,
         start_time: startTime,
@@ -88,7 +85,6 @@ class App extends Component<AppProps, AppState> {
           ...this.state.auctions[auction.name],
           highestPrice,
           name,
-          image,
           startingPrice,
           description,
           startTime: '',
@@ -130,6 +126,11 @@ class App extends Component<AppProps, AppState> {
   // TODO: post to backend
   placeBid = (auctionName: string) => async () => {
     const currentAuction = this.state.auctions[auctionName];
+    console.log('POSTING')
+    console.log(`${this.props.apiRoot}/bid`, 
+    { auctionId: currentAuction._id, bidPrice: currentAuction.enteredPrice },
+    { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
+  )
     const { data } = await axios.post(`${this.props.apiRoot}/bid`, 
       { auctionId: currentAuction._id, bidPrice: currentAuction.enteredPrice },
       { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
@@ -172,7 +173,6 @@ class App extends Component<AppProps, AppState> {
   addAuction = async () => {
     const {
       name,
-      image,
       startingPrice,
       description,
       startTime,
@@ -185,7 +185,6 @@ class App extends Component<AppProps, AppState> {
 
     const { data } = await axios.post(`${this.props.apiRoot}/auction`, {
       name,
-      image,
       start_price: startingPrice,
       description,
       start_time: startTime.toDate(),
@@ -230,7 +229,6 @@ class App extends Component<AppProps, AppState> {
               {/* TODO: if authenicated as admin */}
               <AuctionForm
                 name={this.state.newAuction.name}
-                image={this.state.newAuction.image}
                 startingPrice={this.state.newAuction.startingPrice}
                 description={this.state.newAuction.description}
                 startTime={this.state.newAuction.startTime}

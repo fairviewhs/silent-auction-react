@@ -30,7 +30,7 @@ class AuctionForm extends Component<AuctionFormProps> {
     this.props.onSubmit();
   }
   render() {
-    const { name, image, startingPrice, description, startTime, endTime } = this.props;
+    const { name, startingPrice, description, startTime, endTime } = this.props;
     return (
       <form className="ACPAuctionForm" onSubmit={this.handleSubmit}>
         <label>Name:</label>

@@ -1,4 +1,6 @@
 import { Document, Schema, Model, model} from "mongoose";
+import { IBidModel } from "./bid";
+import { IUserModel } from "./user";
 
 export interface IAuction {
   name: string;
@@ -10,6 +12,8 @@ export interface IAuction {
 
 export interface IAuctionModel extends Document, IAuction {
   isAdmin(): boolean;
+  bids: IBidModel[];
+  users: IUserModel[];
 }
 
 const schema: Schema = new Schema({
