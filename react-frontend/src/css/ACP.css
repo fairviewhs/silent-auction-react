@@ -12,8 +12,13 @@
     width: 15rem;
 }
 
+.ACPAuctionForm label {
+    font-size: .9rem;
+}
+
 .ACPAuctionForm input[type="text"],
 .ACPAuctionForm input[type="number"],
+.ACPAuctionForm input[type="datetime-local"],
 .ACPAuctionForm textarea {
     border: 1px solid #aaa;
     border-radius: .3rem;

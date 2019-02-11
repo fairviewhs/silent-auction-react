@@ -32,12 +32,18 @@ class AuctionForm extends Component<AuctionFormProps> {
     const { name, image, startingPrice, description, startTime, endTime } = this.props;
     return (
       <form className="ACPAuctionForm" onSubmit={this.handleSubmit}>
+        <label>Name:</label>
         <input type="text" placeholder="Bundle Name" value={name} onChange={this.handleChange('name')} required/>
+        <label>Image Url:</label>
         <input type="text" placeholder="Image Url" value={image} onChange={this.handleChange('image')} required/>
+        <label>Start Price:</label>
         <input type="number" placeholder="Starting Price" value={startingPrice} onChange={this.handleChange('startingPrice')} required/>
+        <label>Description:</label>
         <textarea placeholder="Bundle Description" value={description} onChange={this.handleChange('description')} required/>
-        <input type="date" placeholder="Start Time" value={startTime.toISOString().substr(0, 10)} onChange={this.handleChange('startTime')} required/> {/* See https://stackoverflow.com/questions/12346381/set-date-in-input-type-date */}
-        <input type="date" placeholder="End Time" value={endTime.toISOString().substr(0, 10)} onChange={this.handleChange('endTime')} required/>
+        <label>Start Time:</label>
+        <input type="datetime-local" placeholder="Start Time" value={startTime.toISOString().substr(0, 10)} onChange={this.handleChange('startTime')} required/> {/* See https://stackoverflow.com/questions/12346381/set-date-in-input-type-date */}
+        <label>End Time:</label>
+        <input type="datetime-local" placeholder="End Time" value={endTime.toISOString().substr(0, 10)} onChange={this.handleChange('endTime')} required/>
         <input type="submit" value="Submit" required/>
       </form>
     );

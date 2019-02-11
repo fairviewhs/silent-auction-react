@@ -19,7 +19,9 @@ const schema: Schema = new Schema({
   start_price: { required: true, type: Number},
   description: { required: true, type: String },
   start_time: { required: true, type: Date },
-  end_time: { required: true, type: Date }
+  end_time: { required: true, type: Date },
+  bids: [{ type: Schema.Types.ObjectId, ref: 'bid' }],
+  users: [{ type: Schema.Types.ObjectId, ref: 'user' }]
 });
 
 schema.methods.isAdmin = () => false;
