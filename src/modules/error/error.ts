@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import boom = require("boom");
 
 const isBoomError = (error: any): error is boom => {
-  return !!error && !!error.isBoom && error.isBoom();
+  return !!error && !!error.isBoom && error.isBoom;
 }
 
 export default (error: any, req: Request, res: Response, next: NextFunction) => {
