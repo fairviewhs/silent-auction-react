@@ -4,7 +4,7 @@ import Datetime from 'react-datetime';
 import { Moment } from 'moment';
 import { AuctionType, Omit } from '../App';
 
-export type AuctionItems = 'name' | 'image' | 'startingPrice' | 'description' | 'startTime' | 'endTime';
+export type AuctionItems = 'name' | 'startingPrice' | 'description' | 'startTime' | 'endTime';
 
 
 export type AuctionFormProps = Omit<AuctionType, 'startTime' | 'endTime'> & {
@@ -35,8 +35,6 @@ class AuctionForm extends Component<AuctionFormProps> {
       <form className="ACPAuctionForm" onSubmit={this.handleSubmit}>
         <label>Name:</label>
         <input type="text" placeholder="Bundle Name" value={name} onChange={this.handleChange('name')} required/>
-        <label>Image Url:</label>
-        <input type="text" placeholder="Image Url" value={image} onChange={this.handleChange('image')} required/>
         <label>Start Price:</label>
         <input type="number" placeholder="Starting Price" value={startingPrice} onChange={this.handleChange('startingPrice')} required/>
         <label>Description:</label>

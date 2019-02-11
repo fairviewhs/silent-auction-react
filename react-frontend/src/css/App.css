@@ -29,6 +29,7 @@ textarea {
 .app {
     margin: 0 2rem;
     max-width: 1300px;
+    text-align: left;
     width: 100%;
 }
 

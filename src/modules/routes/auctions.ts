@@ -10,7 +10,6 @@ const router = express.Router();
 
 const dto = joi.object({
   name: joi.string().required(),
-  image: joi.string().required(),
   start_price: joi.number().required(),
   description: joi.string().required(),
   start_time: joi.date().required(),

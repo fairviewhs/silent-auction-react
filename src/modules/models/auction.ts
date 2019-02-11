@@ -2,7 +2,6 @@ import { Document, Schema, Model, model} from "mongoose";
 
 export interface IAuction {
   name: string;
-  image: string;
   start_price: number;
   description: string;
   start_time: Date;
@@ -15,7 +14,6 @@ export interface IAuctionModel extends Document, IAuction {
 
 const schema: Schema = new Schema({
   name: { required: true, type: String },
-  image: { required: true, type: String},
   start_price: { required: true, type: Number},
   description: { required: true, type: String },
   start_time: { required: true, type: Date },
