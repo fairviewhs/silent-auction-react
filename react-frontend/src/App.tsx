@@ -8,31 +8,37 @@ import logo from "./logo.png";
 import axios from 'axios';
 import { Route, Switch } from 'react-router-dom';
 import { Moment } from 'moment';
+import { async } from 'q';
 
 export interface AppProps {
   apiRoot: string;
 }
 
-type AuctionType = {
+export type AuctionType = {
+  name: string;
+  image: string;
+  description: string;
   startingPrice: number;
-  highestPrice: number;
-  enteredPrice: number;
+  startTime: Moment;
+  endTime: Moment;
 }
+
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 export interface AppState {
   auctions: {
-    [auctionName: string]: AuctionType
+    [auctionName: string]: AuctionType & {
+      _id: string;
+      highestPrice: number;
+      enteredPrice: number;
+    }
   };
   signup: {
     name: string;
     email: string;
     phone: string;
   };
-  newAuction: {
-    name: string;
-    image: string;
-    startingPrice: number;
-    description: string;
+  newAuction: Omit<AuctionType, 'startTime' | 'endTime'> & {
     startTime: Moment | string;
     endTime: Moment | string;
   };
@@ -65,19 +71,22 @@ class App extends Component<AppProps, AppState> {
     const res = await axios.get(`${this.props.apiRoot}/auction`);
     const updatedAuctions = (res.data as any[]).reduce((prevAuctions, auction) => {
       const {
+        _id,
         name,
         image,
         start_price: startingPrice,
         description,
         start_time: startTime,
-        end_time: endTime
+        end_time: endTime,
+        highestPrice
       } = auction;
       return {
         ...prevAuctions,
         [auction.name]: {
+          _id,
           enteredPrice: 0,
-          highestPrice: startingPrice, // highestPrice and enteredPrice will be overwritten by following line (if they exist)
           ...this.state.auctions[auction.name],
+          highestPrice,
           name,
           image,
           startingPrice,
@@ -104,20 +113,32 @@ class App extends Component<AppProps, AppState> {
     }
   }
 
-
-  handleBidChange = (auctionName: string) => (bidPrice: number) => {
+  handleAuctionPropertyChange = (auctionName: string, properties: any) =>
     this.setState({
       auctions: {
+        ...this.state.auctions,
         [auctionName]: {
           ...this.state.auctions[auctionName],
-          enteredPrice: bidPrice
+          ...properties
         }
       }
     })
-  }
+
+  handleBidChange = (auctionName: string) => (bidPrice: number) => 
+    this.handleAuctionPropertyChange(auctionName, { enteredPrice: bidPrice });
 
   // TODO: post to backend
-  placeBid = () => {}
+  placeBid = (auctionName: string) => async () => {
+    const currentAuction = this.state.auctions[auctionName];
+    const { data } = await axios.post(`${this.props.apiRoot}/bid`, 
+      { auctionId: currentAuction._id, bidPrice: currentAuction.enteredPrice },
+      { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
+    );
+
+    if (data.success) {
+      this.handleAuctionPropertyChange(auctionName, { highestPrice: currentAuction.enteredPrice })
+    }
+  }
 
 
   handleSignupChange = (property: 'name' | 'email' | 'phone', value: string) => {
@@ -170,8 +191,6 @@ class App extends Component<AppProps, AppState> {
       start_time: startTime.toDate(),
       end_time: endTime.toDate()
     });
-    
-    // TODO: post to backend
 
     // TODO: get auctions to update the list
 
@@ -183,11 +202,9 @@ class App extends Component<AppProps, AppState> {
     const auctions = Object.entries(this.state.auctions).map(([auctionName, auction]) => (
       <Auction
         key={auctionName}
-        startingPrice={auction.startingPrice}
-        highestPrice={auction.highestPrice}
-        enteredPrice={auction.enteredPrice}
+        {...auction}
         onChange={this.handleBidChange(auctionName)}
-        onSubmit={this.placeBid}
+        onSubmit={this.placeBid(auctionName)}
         canBid={this.state.loggedIn}
       />
     ));
