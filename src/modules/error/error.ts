@@ -12,6 +12,7 @@ export default (error: any, req: Request, res: Response, next: NextFunction) => 
     .header(boomError.output.headers)
     .json({
       ...boomError.output.payload,
+      data: boomError.data,
       success: false
     });
 }
