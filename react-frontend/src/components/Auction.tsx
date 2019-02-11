@@ -22,31 +22,35 @@ class Auction extends Component<AuctionProps> {
     const { name, image, description, startTime, endTime, startingPrice, highestPrice, enteredPrice, canBid, onChange, onSubmit } = this.props;
     return (
       <div className="auction">
-        <h2 className="auctionName">{name}</h2>
-        <img src={image} className="auctionImg"/>
-        <p className="auctionDesc">
-          {description}
-        </p>
-        <div className="auctionStart">
-            Starting Price:
-            <div className="auctionStartVal">
-                {this.formatMoney(startingPrice)}
-            </div>
+        <div className="auctionL">
+          <h2 className="auctionName">{name}</h2>
+          {/* TODO: SPONSORS */}
+          <p className="auctionDesc">
+            {description}
+          </p>
+          <div className="auctionStart">
+              Starting Price:
+              <div className="auctionStartVal">
+                  {this.formatMoney(startingPrice)}
+              </div>
+          </div>
+          <div className="auctionHighest">
+              Highest Bid:
+              <div className="auctionHighestVal">
+                  {this.formatMoney(highestPrice)}
+              </div>
+          </div>
+          {
+            canBid &&
+            <BidForm 
+              onChange={onChange}
+              onSubmit={onSubmit}
+              value={enteredPrice}
+            />
+          }
         </div>
-        <div className="auctionHighest">
-            Highest Bid:
-            <div className="auctionHighestVal">
-                {this.formatMoney(highestPrice)}
-            </div>
+        <div className="auctionR">
         </div>
-        {
-          canBid &&
-          <BidForm 
-            onChange={onChange}
-            onSubmit={onSubmit}
-            value={enteredPrice}
-          />
-        }
       </div>
     );
   }

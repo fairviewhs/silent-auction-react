@@ -2,26 +2,28 @@
     border-radius: .5rem;
     box-shadow: 1px 1px 8px 1px #aaa;
     box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 .5rem 0;
+    text-align: left;
+}
+
+.auctionL {
+    border-right: 1px solid #aaa;
     display: inline-flex;
     flex-direction: column;
-    justify-content: flex-start;
-    margin: 0 1rem .5rem 1rem;
     padding: 1.5rem;
-    text-align: left;
-    width: 20rem;
+    width: 25rem;
+}
+
+.auctionR {
+    flex: 1;
+    padding: 1.5rem;
 }
 
 .auctionName {
     font-size: 1.2rem;
-    margin: 0 0 1rem 0;
-    text-align: center;
-}
-
-.auctionImg {
-    align-self: center;
-    display: inline-flex;
-    max-height: 8rem;
-    max-width: 100%;
+    margin: 0 0 .5rem 0;
 }
 
 .auctionHighest,
