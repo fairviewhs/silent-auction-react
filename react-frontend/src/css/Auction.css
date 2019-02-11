@@ -73,3 +73,42 @@
     background: #8e092d;
     cursor: pointer;
 }
+
+.rdt {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.rdtPicker {
+    background: #fff;
+    border-radius: .3rem;
+    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, .4);
+    display: none;
+    margin: 0 0 1rem 0;
+    padding: .2rem;
+    z-index: 50;
+}
+
+.rdtOpen .rdtPicker {
+    display: block;
+    position: absolute;
+}
+
+.rdtCounters {
+    align-items: center;
+    display: flex;
+}
+
+.rdtTimeToggle,
+.rdtSwitch {
+    color: #a81f44;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.rdtTimeToggle:hover,
+.rdtSwitch:hover {
+    color: #8e092d;
+    cursor: pointer;
+}

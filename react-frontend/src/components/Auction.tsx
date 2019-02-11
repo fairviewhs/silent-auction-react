@@ -48,6 +48,7 @@ class Auction extends Component<AuctionProps> {
           }
         </div>
         <div className="auctionR">
+          Put logos here.
         </div>
       </div>
     );
