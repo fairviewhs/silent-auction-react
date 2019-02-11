@@ -1,5 +1,7 @@
 import React, { Component, ChangeEvent, FormEvent } from 'react';
 import '../css/ACP.css';
+import Datetime from 'react-datetime';
+import { Moment } from 'moment';
 
 export type AuctionItems = 'name' | 'image' | 'startingPrice' | 'description' | 'startTime' | 'endTime';
 
@@ -8,25 +10,33 @@ export interface AuctionFormProps {
   image: string;
   startingPrice: number;
   description: string;
-  startTime: Date;
-  endTime: Date;
+  startTime: string | Moment;
+  endTime: string | Moment;
   onChange: (property: AuctionItems, value: any) => any;
   onSubmit: () => any;
 }
 
 class AuctionForm extends Component<AuctionFormProps> {
+
   handleChange = (property: AuctionItems) => (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
     let value: any = event.target.value;
-    if (property === 'startTime' || property === 'endTime') {
-      value = (event as ChangeEvent<HTMLInputElement>).target.valueAsDate;
-    } else if (property === 'startingPrice') {
+    if (property === 'startingPrice') {
       value = parseFloat(value);
     }
     this.props.onChange(property, value);
   }
+  handleDateChange = (property: 'startTime' | 'endTime') => (date: string | Moment) => {
+    this.props.onChange(property, date);
+  }
   handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     this.props.onSubmit();
+  }
+  dateToString = (rawDate: Date): string => {
+    return rawDate.toISOString().slice(0, -1);
+    // const date = moment(rawDate);
+    // console.log(date)
+    // return date.toStr;
   }
   render() {
     const { name, image, startingPrice, description, startTime, endTime } = this.props;
@@ -41,9 +51,11 @@ class AuctionForm extends Component<AuctionFormProps> {
         <label>Description:</label>
         <textarea placeholder="Bundle Description" value={description} onChange={this.handleChange('description')} required/>
         <label>Start Time:</label>
-        <input type="datetime-local" placeholder="Start Time" value={startTime.toISOString().substr(0, 10)} onChange={this.handleChange('startTime')} required/> {/* See https://stackoverflow.com/questions/12346381/set-date-in-input-type-date */}
+        <Datetime value={startTime} onChange={this.handleDateChange('startTime')} />
+        {/* <input type="datetime-local" placeholder="Start Time" value={this.dateToString(startTime)} onChange={this.handleChange('startTime')} required/> See https://stackoverflow.com/questions/12346381/set-date-in-input-type-date */}
         <label>End Time:</label>
-        <input type="datetime-local" placeholder="End Time" value={endTime.toISOString().substr(0, 10)} onChange={this.handleChange('endTime')} required/>
+        <Datetime value={endTime} onChange={this.handleDateChange('endTime')} />
+        {/* <input type="datetime-local" placeholder="End Time" value={this.dateToString(endTime)} onChange={this.handleChange('endTime')} required/> */}
         <input type="submit" value="Submit" required/>
       </form>
     );

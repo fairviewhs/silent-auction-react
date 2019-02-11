@@ -7,6 +7,7 @@ import Results from "./components/Results";
 import logo from "./logo.png";
 import axios from 'axios';
 import { Route, Switch } from 'react-router-dom';
+import { Moment } from 'moment';
 
 export interface AppProps {
   apiRoot: string;
@@ -32,8 +33,8 @@ export interface AppState {
     image: string;
     startingPrice: number;
     description: string;
-    startTime: Date;
-    endTime: Date;
+    startTime: Moment | string;
+    endTime: Moment | string;
   };
   loggedIn: boolean;
 }
@@ -52,8 +53,8 @@ class App extends Component<AppProps, AppState> {
       image: '',
       startingPrice: 0,
       description: '',
-      startTime: new Date(),
-      endTime: new Date()
+      startTime: '',
+      endTime: ''
     },
     loggedIn: !!localStorage.getItem('token')
   }
@@ -81,8 +82,8 @@ class App extends Component<AppProps, AppState> {
           image,
           startingPrice,
           description,
-          startTime: new Date(startTime),
-          endTime: new Date(endTime)
+          startTime: '',
+          endTime: ''
         }
       }
     }, {});
@@ -156,13 +157,18 @@ class App extends Component<AppProps, AppState> {
       startTime,
       endTime
     } = this.state.newAuction;
+
+    if (typeof startTime === 'string' || typeof endTime === 'string') {
+      return;
+    }
+
     const { data } = await axios.post(`${this.props.apiRoot}/auction`, {
       name,
       image,
       start_price: startingPrice,
       description,
-      start_time: new Date(startTime),
-      end_time: new Date(endTime)
+      start_time: startTime.toDate(),
+      end_time: endTime.toDate()
     });
     
     // TODO: post to backend
