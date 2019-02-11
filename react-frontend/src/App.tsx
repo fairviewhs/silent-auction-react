@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './css/App.css';
 import Auction from "./components/Auction";
 import AuctionForm, { AuctionItems } from "./components/AuctionForm";
@@ -6,7 +6,7 @@ import SignUp from "./components/SignUp";
 import Results from "./components/Results";
 import logo from "./logo.png";
 import axios from 'axios';
-import { BrowserRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
 
 export interface AppProps {
   apiRoot: string;
@@ -199,29 +199,41 @@ class App extends Component<AppProps, AppState> {
             }
           </div>
         </h1>
-        {
-          !this.state.loggedIn &&
-          <SignUp
-            name={this.state.signup.name}
-            email={this.state.signup.email}
-            phone={this.state.signup.phone}
-            onChange={this.handleSignupChange}
-            onSubmit={this.register}
-          />
-        }
-        {auctions}
-        <Results/>
-        {/* TODO: if authenicated as admin */}
-        <AuctionForm
-          name={this.state.newAuction.name}
-          image={this.state.newAuction.image}
-          startingPrice={this.state.newAuction.startingPrice}
-          description={this.state.newAuction.description}
-          startTime={this.state.newAuction.startTime}
-          endTime={this.state.newAuction.endTime}
-          onChange={this.handleNewAuctionChange}
-          onSubmit={this.addAuction}
-        />
+        
+        <Switch>
+          <Route exact path="/admin" render={() => (
+            <Fragment>
+              <Results/>
+              {/* TODO: if authenicated as admin */}
+              <AuctionForm
+                name={this.state.newAuction.name}
+                image={this.state.newAuction.image}
+                startingPrice={this.state.newAuction.startingPrice}
+                description={this.state.newAuction.description}
+                startTime={this.state.newAuction.startTime}
+                endTime={this.state.newAuction.endTime}
+                onChange={this.handleNewAuctionChange}
+                onSubmit={this.addAuction}
+              />
+            </Fragment>
+          )} />
+
+          <Route render={() => (
+            <Fragment>
+              {
+                !this.state.loggedIn &&
+                <SignUp
+                  name={this.state.signup.name}
+                  email={this.state.signup.email}
+                  phone={this.state.signup.phone}
+                  onChange={this.handleSignupChange}
+                  onSubmit={this.register}
+                />
+              }
+              {auctions}
+            </Fragment>
+          )} />
+        </Switch>
         <div className="footer">
           Made with ❤️ by <a href="nhsurl">NHS</a> and <a href="wturl">Web Team</a>.
         </div>
