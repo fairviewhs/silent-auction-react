@@ -1,5 +1,6 @@
 import { Document, Schema, Model, model} from "mongoose";
 import { IBidModel } from "./bid";
+import { ISponsorModel } from "./sponsor";
 import { IUserModel } from "./user";
 
 export interface IAuction {
@@ -11,9 +12,9 @@ export interface IAuction {
 }
 
 export interface IAuctionModel extends Document, IAuction {
-  isAdmin(): boolean;
   bids: IBidModel[];
   users: IUserModel[];
+  sponsors: ISponsorModel[];
 }
 
 const schema: Schema = new Schema({
@@ -23,9 +24,8 @@ const schema: Schema = new Schema({
   start_time: { required: true, type: Date },
   end_time: { required: true, type: Date },
   bids: [{ type: Schema.Types.ObjectId, ref: 'bid' }],
-  users: [{ type: Schema.Types.ObjectId, ref: 'user' }]
+  users: [{ type: Schema.Types.ObjectId, ref: 'user' }],
+  sponsor: [{ type: Schema.Types.ObjectId, ref: 'sponsor' }]
 });
-
-schema.methods.isAdmin = () => false;
 
 export const Auction: Model<IAuctionModel> = model('auction', schema);

@@ -1,8 +1,5 @@
 import React, { Component, ChangeEvent, FormEvent } from 'react';
 import '../css/ACP.css';
-import Datetime from 'react-datetime';
-import { Moment } from 'moment';
-import { SponsorType, Omit } from '../App';
 
 export type SponsorItems = 'name' | 'auction' | 'url';
 
