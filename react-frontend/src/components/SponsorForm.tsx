@@ -1,7 +1,7 @@
 import React, { Component, ChangeEvent, FormEvent } from 'react';
 import '../css/ACP.css';
 
-export type SponsorItems = 'name' | 'auction' | 'url';
+export type SponsorItems = 'name' | 'image' | 'auction';
 
 interface SponsorFormProps {
     name: string;
