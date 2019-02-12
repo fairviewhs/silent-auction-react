@@ -14,7 +14,7 @@ const dto = joi.object({
   start_price: joi.number().required(),
   description: joi.string().required(),
   start_time: joi.date().required(),
-  end_time: joi.date().required(),
+  end_time: joi.date().required()
 }).required()
 
 router.get('/', asyncMid(async (req, res) => {

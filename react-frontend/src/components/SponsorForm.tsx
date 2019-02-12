@@ -30,7 +30,7 @@ class SponsorForm extends Component<SponsorFormProps> {
                     <option key={auction._id} value={auction._id}>{auction.name}</option>
                 ))
             }
-            {/* <option value="none" selected={true}>Select Auction</option> */}
+            <option value="none" selected={true}>Select Auction</option>
         </select>
         <input type="submit" value="Submit" required/>
       </form>
