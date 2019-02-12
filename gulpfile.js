@@ -20,6 +20,7 @@ const watchFiles = () =>
   watch('./src/**/*.ts', build);
 
 module.exports = {
+  partialBuild: build,
   build: parallel(build, series(buildReact, moveReactBuild)),
   watch: watchFiles
 }

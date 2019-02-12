@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Auction.css';
 import BidForm from './BidForm';
-import { Moment } from 'moment';
 import { AuctionType } from '../App';
 
 export interface AuctionProps extends AuctionType {

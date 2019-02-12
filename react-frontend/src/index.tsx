@@ -4,11 +4,38 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from './reducers'
+import api from './redux-middleware/api/api';
+import httpError from './redux-middleware/http-error/http-error';
+import { composeWithDevTools } from "redux-devtools-extension";
+import { logout } from './actions/login';
+
+const store = createStore(
+  reducers,
+  composeWithDevTools(
+    applyMiddleware(
+      // thunk,
+      api({
+        getAuthFromState: state => state.login.token
+      }),
+      httpError([
+        {
+          statusCode: 401,
+          action: logout
+        }
+      ])
+    )
+  )
+);
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App apiRoot="http://localhost:3001/api" />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

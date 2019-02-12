@@ -1,0 +1,23 @@
+import * as LoginActionTypes from '../actiontypes/login';
+import { CALL_API } from '../redux-middleware/api/api';
+
+export const login = (name: string, email: string, phone: string) => ({
+  [CALL_API]: {
+    types: [
+      LoginActionTypes.REQUEST_LOGIN,
+      LoginActionTypes.RECEIVE_LOGIN,
+      LoginActionTypes.FAILURE_LOGIN
+    ],
+    endpoint: '/auth/create', // TODO: change backend to login
+    method: 'POST',
+    data: {
+      name,
+      email,
+      phone
+    }
+  }
+});
+
+export const logout = () => ({
+  type: LoginActionTypes.INVALIDATE_LOGIN
+});
