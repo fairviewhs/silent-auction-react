@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import '../css/Auction.css';
-import BidForm from './BidForm';
-import { SponsorType } from '../App';
 
-export interface SponsorsProps extends SponsorsType {
-  highestPrice: number;
-  enteredPrice: number;
-  canBid: boolean;
-  onChange: (bidPrice: number) => any;
-  onSubmit: () => any;
+export interface SponsorsProps {
+  sponsors: {_id: string, name: string, image: string}[];
 }
 
 class Sponsors extends Component<SponsorsProps> {
 
   render() {
-    const { name, image } = this.props;
     return (
-      <img src={image} alt={name}/>
+      <div className="sponsors">
+        {
+          this.props.sponsors.map(sponsor => { 
+            <img src={sponsor.image} alt={sponsor.name} className="sponsor"/>
+          })
+        }
+      </div>
     );
   }
 }

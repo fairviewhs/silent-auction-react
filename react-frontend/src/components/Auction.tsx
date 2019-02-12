@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import '../css/Auction.css';
 import BidForm from './BidForm';
-import { Moment } from 'moment';
+import Sponsors from './Sponsors';
 import { AuctionType } from '../App';
 
 export interface AuctionProps extends AuctionType {
   highestPrice: number;
   enteredPrice: number;
   canBid: boolean;
+  sponsors: {_id: string, name: string, image: string}[];
   onChange: (bidPrice: number) => any;
   onSubmit: () => any;
 }
@@ -19,7 +20,19 @@ class Auction extends Component<AuctionProps> {
   }
 
   render() {
-    const { name, description, startTime, endTime, startingPrice, highestPrice, enteredPrice, canBid, onChange, onSubmit } = this.props;
+    const {
+      name, 
+      description, 
+      startTime, 
+      endTime, 
+      startingPrice, 
+      highestPrice,
+      sponsors, 
+      enteredPrice, 
+      canBid, 
+      onChange, 
+      onSubmit 
+    } = this.props;
     return (
       <div className="auction">
         <div className="auctionL">
@@ -50,7 +63,7 @@ class Auction extends Component<AuctionProps> {
           }
         </div>
         <div className="auctionR">
-          Put logos here.
+          <Sponsors sponsors={sponsors}/>
         </div>
       </div>
     );

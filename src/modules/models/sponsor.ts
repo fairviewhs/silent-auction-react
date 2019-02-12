@@ -16,4 +16,4 @@ const schema: Schema = new Schema({
   auctions: [{ required: true, type: Schema.Types.ObjectId, ref: "auction" }]
 });
 
-export const Auction: Model<ISponsorModel> = model('auction', schema);
+export const Sponsor: Model<ISponsorModel> = model('sponsor', schema);

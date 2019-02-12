@@ -29,6 +29,7 @@ export interface AppState {
     [auctionName: string]: AuctionType & {
       _id: string;
       highestPrice: number;
+      sponsors: {_id: string, name: string, image: string}[];
       enteredPrice: number;
     }
   };
@@ -75,7 +76,8 @@ class App extends Component<AppProps, AppState> {
         description,
         start_time: startTime,
         end_time: endTime,
-        highestPrice
+        highestPrice,
+        sponsors
       } = auction;
       return {
         ...prevAuctions,
@@ -84,6 +86,7 @@ class App extends Component<AppProps, AppState> {
           enteredPrice: startingPrice + 1,
           ...this.state.auctions[auction.name],
           highestPrice,
+          sponsors,
           name,
           startingPrice,
           description,
