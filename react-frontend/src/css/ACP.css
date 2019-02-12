@@ -1,4 +1,5 @@
-.ACPAuctionForm {
+.ACPAuctionForm,
+.ACPSponsorForm {
     border-radius: .5rem;
     box-shadow: 1px 1px 8px 1px #aaa;
     box-sizing: border-box;
@@ -12,14 +13,16 @@
     width: 15rem;
 }
 
-.ACPAuctionForm label {
+.ACPAuctionForm label,
+.ACPSponsorForm label {
     font-size: .9rem;
 }
 
 .ACPAuctionForm input[type="text"],
 .ACPAuctionForm input[type="number"],
 .ACPAuctionForm input[type="datetime-local"],
-.ACPAuctionForm textarea {
+.ACPAuctionForm textarea,
+.ACPSponsorForm input[type="text"] {
     border: 1px solid #aaa;
     border-radius: .3rem;
     flex: 1;
@@ -32,7 +35,8 @@
     height: 3rem;
 }
 
-.ACPAuctionForm input[type="submit"] {
+.ACPAuctionForm input[type="submit"],
+.ACPSponsorForm input[type="submit"] {
     background: #a81f44;
     border: none;
     border-radius: .3rem;
@@ -42,7 +46,8 @@
     transition: all .5s ease;
 }
 
-.ACPAuctionForm input[type="submit"]:hover {
+.ACPAuctionForm input[type="submit"]:hover,
+.ACPSponsorForm input[type="submit"]:hover {
     background: #8e092d;
     cursor: pointer;
 }

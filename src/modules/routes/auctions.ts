@@ -6,6 +6,7 @@ import { User } from '../models/user';
 import { Auction } from '../models/auction';
 import boom = require('boom');
 import { Bid } from '../models/bid';
+import { Sponsor } from '../models/sponsor';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ const dto = joi.object({
   start_price: joi.number().required(),
   description: joi.string().required(),
   start_time: joi.date().required(),
-  end_time: joi.date().required(),
+  end_time: joi.date().required()
 }).required()
 
 router.get('/', asyncMid(async (req, res) => {
@@ -22,9 +23,11 @@ router.get('/', asyncMid(async (req, res) => {
   const auctions = await Promise.all(rawAuctions.map(async (auction) => {
     const highestBids = await Bid.find({ auction: auction._id }).sort({ amount: -1 }).limit(1).exec();
     const highestPrice = highestBids.length > 0 ? highestBids[0].amount : auction.start_price
+    const sponsors = await Sponsor.find({auction: auction._id}).exec();
     return {
       ...auction.toObject(),
-      highestPrice
+      highestPrice,
+      sponsors
     }
   }))
   res.json(auctions);
