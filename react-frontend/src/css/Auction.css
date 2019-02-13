@@ -58,7 +58,7 @@
     flex: 1;
     font-size: 1.2rem;
     padding: .5rem;
-    width: 0;
+    /* width: 0; */
 }
 
 .auctionForm input[type="submit"] {
