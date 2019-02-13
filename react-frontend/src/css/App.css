@@ -111,6 +111,15 @@ textarea {
     position: absolute;
 }
 
+.flashError {
+    background: #ff7070;
+    border: 1px solid #c93636;
+    border-radius: 3rem;
+    color: #590000;
+    margin: 0 0 .5rem 0;
+    padding: 1rem;
+}
+
 @keyframes heartBeat {
     0% {padding: 2rem;}
     50% {padding: 1.5rem;}
@@ -146,6 +155,10 @@ textarea {
     .appTitle img {
         height: 1.6rem;
         margin: 0 .5rem 0 0;
+    }
+
+    .footer {
+        padding: 1rem 0;
     }
 
 }
