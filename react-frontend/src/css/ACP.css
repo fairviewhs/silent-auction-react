@@ -22,7 +22,8 @@
 .ACPAuctionForm input[type="number"],
 .ACPAuctionForm input[type="datetime-local"],
 .ACPAuctionForm textarea,
-.ACPSponsorForm input[type="text"] {
+.ACPSponsorForm input[type="text"],
+.ACPSponsorForm select {
     border: 1px solid #aaa;
     border-radius: .3rem;
     flex: 1;
