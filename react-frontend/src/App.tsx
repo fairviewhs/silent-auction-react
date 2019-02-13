@@ -78,7 +78,6 @@ class App extends Component<AppProps> {
                 <SignUp2 />
               }
               <AuctionList />
-              <SponsorForm />
             </Fragment>
           )} />
         </Switch>
