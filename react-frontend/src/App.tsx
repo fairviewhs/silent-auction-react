@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { logout } from './actions/login';
 import CreateAuction from './components/CreateAuction';
 import { Moment } from 'moment';
+import SponsorForm from './components/SponsorForm';
 
 export interface AppProps {
   isLoggedIn: boolean;
@@ -71,6 +72,7 @@ class App extends Component<AppProps> {
                 <SignUp2 />
               }
               <AuctionList />
+              <SponsorForm />
             </Fragment>
           )} />
         </Switch>

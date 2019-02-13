@@ -18,6 +18,7 @@ export const fetchAuctions = () => ({
       endTime: apiAuction.end_time,
       highestPrice: apiAuction.highestPrice,
       startingPrice: apiAuction.start_price,
+      sponsors: apiAuction.sponsors,
       _id: apiAuction._id
     }))
   }

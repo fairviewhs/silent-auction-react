@@ -23,9 +23,9 @@ const schema: Schema = new Schema({
   description: { required: true, type: String },
   start_time: { required: true, type: Date },
   end_time: { required: true, type: Date },
-  bids: [{ type: Schema.Types.ObjectId, ref: 'bid' }],
-  users: [{ type: Schema.Types.ObjectId, ref: 'user' }],
-  sponsor: [{ type: Schema.Types.ObjectId, ref: 'sponsor' }]
+  bids: [{ requrired: true, type: Schema.Types.ObjectId, ref: 'bid' }],
+  users: [{ required: true, type: Schema.Types.ObjectId, ref: 'user' }],
+  sponsors: [{ reduired: true, type: Schema.Types.ObjectId, ref: 'sponsor' }]
 });
 
 export const Auction: Model<IAuctionModel> = model('auction', schema);
