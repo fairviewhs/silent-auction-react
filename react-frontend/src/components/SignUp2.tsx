@@ -34,7 +34,17 @@ class SignUp extends Component<SignUpProps> {
     return (
       <div className="signUp">
         <div className="signUpInfo">
-            Sign up to participate in the auctions. We will contact you if you win an item.
+          <h2>Our Cause</h2>
+          <p>
+            This year, Fairview National Honor Society is hosting a silent auction on February 13th and 14th at Fairview High School’s Parent Teacher Conferences to support There With Care, a Boulder-based non-profit which provides resources and care for families of children with a critical illness. 
+          </p>
+          <a className="supporting" href="https://therewithcare.org/">
+            <img src="https://therewithcare.org/wp-content/uploads/2017/01/TWC-logo-retina.png"/>
+          </a>
+          <h2>Get Involved</h2>
+          <p>
+            Give us your contact info to start bidding anonymously. We will use the details you provide us to contact you if you win an auction!
+          </p>
         </div>
         <form className="signUpForm" onSubmit={this.handleSubmit}>
             <h2>Join the Auction!</h2>
