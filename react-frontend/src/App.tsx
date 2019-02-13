@@ -51,6 +51,11 @@ class App extends Component<AppProps> {
   render() {
     return (
       <div className="app">
+        <div className="appLoad">
+          <div className="appLoadIcon">
+          </div>
+          <div className="heart"></div>
+        </div>
         <h1 className="appTitle">
           <div className="appTitleL">
             <img src={logo}/>

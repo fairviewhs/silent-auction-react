@@ -1,10 +1,12 @@
 .signUp {
+    align-items: flex-start;
     display: flex;
+    margin: 0 0 1rem 0;
 }
 
 .signUpInfo {
     flex: 1;
-    margin: 0 1rem 0 0;
+    margin: 0 2rem 0 0;
     text-align: left;
 }
 
@@ -50,4 +52,33 @@
 .signUpForm input[type="submit"]:hover {
     background: #8e092d;
     cursor: pointer;
+}
+
+.supporting {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.supporting img {
+    max-width: 100%;
+    width: 20rem;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .signUp {
+        display: block;
+    }
+
+    .signUpInfo {
+        margin: 0 0 1.5rem 0;
+    }
+
+    .signUpForm {
+        display: flex;
+        padding: 1rem;
+        width: auto;
+    }
+
 }

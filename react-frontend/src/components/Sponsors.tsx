@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/Auction.css';
 
 export interface SponsorsProps {
   sponsors: {_id: string, name: string, image: string}[];

@@ -22,7 +22,8 @@
 .ACPAuctionForm input[type="number"],
 .ACPAuctionForm input[type="datetime-local"],
 .ACPAuctionForm textarea,
-.ACPSponsorForm input[type="text"] {
+.ACPSponsorForm input[type="text"],
+.ACPSponsorForm select {
     border: 1px solid #aaa;
     border-radius: .3rem;
     flex: 1;
@@ -50,4 +51,15 @@
 .ACPSponsorForm input[type="submit"]:hover {
     background: #8e092d;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .ACPAuctionForm,
+    .ACPSponsorForm {
+        display: flex;
+        margin: 0 0 .5rem 0;
+        width: auto;
+    }
+
 }
