@@ -3,6 +3,7 @@ export const afsd = 'afas';
 import CallApi from './CallApi';
 import { get } from 'lodash';
 import { HTTP_ERROR } from "../http-error/http-error";
+import pMinDelay from 'p-min-delay';
 
 // TODO: TEST!
 let apiRoot = 'http://localhost:3001/api';
@@ -74,6 +75,10 @@ export default ({ getAuthFromState } = { getAuthFromState: (val: any) => val }) 
   next(actionWith({ type: requestType }));
 
   let apiCall = CallApi(endpoint, method, mapResponse, data, token);
+
+  if (minimumDelay) {
+    apiCall = pMinDelay(apiCall, minimumDelay, { delayRejection: false });
+  }
 
   return apiCall
     .then(response => next(actionWith({

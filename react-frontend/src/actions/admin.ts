@@ -13,7 +13,8 @@ export const loginAdmin = (email: string, password: string) => ({
     data: {
       email,
       password
-    }
+    },
+    minimumDelay: 1000
   }
 });
 

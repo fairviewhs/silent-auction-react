@@ -14,7 +14,8 @@ export const login = (name: string, email: string, phone: string) => ({
       name,
       email,
       phone
-    }
+    },
+    minimumDelay: 1000
   }
 });
 

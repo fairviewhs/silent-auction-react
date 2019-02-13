@@ -10,9 +10,11 @@ import CreateAuction from './components/CreateAuction';
 import { Moment } from 'moment';
 import SponsorForm from './components/SponsorForm';
 import AdminPage from './components/AdminPage';
+import Heart from './components/Heart';
 
 export interface AppProps {
   isLoggedIn: boolean;
+  isFetching: boolean;
   logout: () => any;
 }
 
@@ -51,11 +53,6 @@ class App extends Component<AppProps> {
   render() {
     return (
       <div className="app">
-        <div className="appLoad">
-          <div className="appLoadIcon">
-          </div>
-          <div className="heart"></div>
-        </div>
         <h1 className="appTitle">
           <div className="appTitleL">
             <img src={logo}/>
@@ -68,6 +65,11 @@ class App extends Component<AppProps> {
             }
           </div>
         </h1>
+
+        {
+          this.props.isFetching &&
+          <Heart />
+        }
         
         <Switch>
           <Route exact path="/admin" component={AdminPage} />
@@ -90,7 +92,8 @@ class App extends Component<AppProps> {
 }
 
 const mapStateToProps = (state: any) => ({
-  isLoggedIn: !!state.login.token
+  isLoggedIn: !!state.login.token,
+  isFetching: !!state.login.isFetching || state.admin.isFetching
 });
 
 const mapDispatchToProps = {

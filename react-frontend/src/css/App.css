@@ -82,8 +82,8 @@ textarea {
 .appLoad {
     background: #fff;
     align-items: center;
-    /* display: flex; */
-    display: none;
+    display: flex;
+    /* display: none; */
     height: 100%;
     justify-content: center;
     position: fixed;
