@@ -9,6 +9,7 @@ import { logout } from './actions/login';
 import CreateAuction from './components/CreateAuction';
 import { Moment } from 'moment';
 import SponsorForm from './components/SponsorForm';
+import AdminPage from './components/AdminPage';
 
 export interface AppProps {
   isLoggedIn: boolean;
@@ -64,7 +65,7 @@ class App extends Component<AppProps> {
         </h1>
         
         <Switch>
-          <Route exact path="/admin" component={CreateAuction} />
+          <Route exact path="/admin" component={AdminPage} />
           <Route render={() => (
             <Fragment>
               {

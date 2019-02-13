@@ -5,18 +5,20 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import path from 'path';
 import passport from 'passport';
-import jwtStrategy from './modules/auth/passport';
+import { user as userAuth, admin as adminAuth} from './modules/auth/passport';
 import error from './modules/error/error';
 import auth from './modules/routes/auth';
 import bids from './modules/routes/bid';
 import auctions from './modules/routes/auctions';
 import sponsors from './modules/routes/sponsor';
+import admin from './modules/routes/admin';
 
 // Mongoose Setup
 mongoose.connect('mongodb://localhost:27017/silent-auction', { useNewUrlParser: true });
 
 // Passport setup (authentication)
-passport.use(jwtStrategy());
+passport.use('user', userAuth());
+passport.use('admin', adminAuth());
 
 // Express Config
 const app = express();
@@ -32,6 +34,7 @@ apiRoute.use('/auth', auth);
 apiRoute.use('/auction', auctions);
 apiRoute.use('/bid', bids);
 apiRoute.use('/sponsor', sponsors)
+apiRoute.use('/admin', admin);
 // apiRoute.use('/donation', donations);
 // apiRoute.use('/item', items);
 // apiRoute.use('/user', users);

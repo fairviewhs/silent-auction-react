@@ -7,6 +7,9 @@ const isBoomError = (error: any): error is boom => {
 
 export default (error: any, req: Request, res: Response, next: NextFunction) => {
   const boomError: boom = isBoomError(error) ? error : boom.badImplementation();
+  if (!isBoomError(error)) {
+    console.log(error)
+  }
   res
     .status(boomError.output.statusCode)
     .header(boomError.output.headers)

@@ -18,7 +18,6 @@ class SignUp extends Component<SignUpProps> {
 
   handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log("LOGIN")
     this.props.onSubmit();
   }
 

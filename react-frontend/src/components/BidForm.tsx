@@ -22,8 +22,6 @@ export default class BidForm extends Component<BidProps> {
   }
   handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log('is error')
-    console.log(this.state.error);
     if (!this.state.error) {
       this.props.onSubmit();
     }

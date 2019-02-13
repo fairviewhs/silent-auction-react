@@ -7,6 +7,7 @@ import { Auction } from '../models/auction';
 import boom = require('boom');
 import { Bid } from '../models/bid';
 import { Sponsor } from '../models/sponsor';
+import authenticated from '../middleware/authenticated';
 
 const router = express.Router();
 
@@ -24,7 +25,7 @@ router.get('/', asyncMid(async (req, res) => {
     const highestBids = await Bid.find({ auction: auction._id }).sort({ amount: -1 }).limit(1).exec();
     const highestPrice = highestBids.length > 0 ? highestBids[0].amount : auction.start_price
     const sponsors = await Sponsor.find({auctions: auction._id}).exec();
-    console.log(await Sponsor.find().exec());
+
     return {
       ...auction.toObject(),
       highestPrice,
@@ -44,18 +45,18 @@ router.get('/:id', asyncMid(async (req, res) => {
     });
 }));
 
-router.post('/', validate(dto), asyncMid(async (req, res) => {
+router.post('/', authenticated('admin'), validate(dto), asyncMid(async (req, res) => {
   const auction = await Auction.create(req.body);
   res.json({ success: true, data: auction });
 }));
 
-router.post('/edit/:id', validate(dto), asyncMid(async (req, res) => {
+router.post('/edit/:id', authenticated('admin'), validate(dto), asyncMid(async (req, res) => {
     const id = req.params.id;
     const update = req.body.update;
     await Auction.findOneAndUpdate({_id: id}, update).exec();
 }));
 
-router.post('/delete/:id', validate(dto), asyncMid(async (req, res) => {
+router.post('/delete/:id', authenticated('admin'), validate(dto), asyncMid(async (req, res) => {
     const id = req.params.id;
     const update = req.body.update;
     await Auction.findOneAndDelete({_id: id}, update).exec();

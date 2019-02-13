@@ -70,8 +70,6 @@ export default ({ getAuthFromState } = { getAuthFromState: (val: any) => val }) 
     token = getAuthFromState(store.getState());
   }
 
-  console.log({token});
-
   const [requestType, successType, failureType] = types;
   next(actionWith({ type: requestType }));
 

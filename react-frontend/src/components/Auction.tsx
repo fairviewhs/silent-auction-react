@@ -3,6 +3,7 @@ import '../css/Auction.css';
 import BidForm from './BidForm';
 import Sponsors from './Sponsors';
 import { AuctionType } from '../App';
+import moment from 'moment';
 
 export interface AuctionProps extends AuctionType {
   highestPrice: number;
@@ -33,11 +34,17 @@ class Auction extends Component<AuctionProps> {
       onChange, 
       onSubmit 
     } = this.props;
+
+    const currentTime = moment();
+
+    if (currentTime.isBefore(startTime) || currentTime.isAfter(endTime)) {
+      return null;
+    }
+
     return (
       <div className="auction">
         <div className="auctionL">
           <h2 className="auctionName">{name}</h2>
-          {/* TODO: SPONSORS */}
           <p className="auctionDesc">
             {description}
           </p>

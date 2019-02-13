@@ -4,6 +4,7 @@ import { Sponsor } from '../models/sponsor';
 import joi from 'joi';
 import validate from '../middleware/validate';
 import { Auction } from '../models/auction';
+import authenticated from '../middleware/authenticated';
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ const dto = joi.object({
 }).required()
 
 // TODO
-router.post('/', validate(dto), asyncMid(async (req, res) => {
+router.post('/', authenticated('admin'), validate(dto), asyncMid(async (req, res) => {
     const { name, image, auctionIds } = req.body;
 
     const sponsor = await Sponsor.create({

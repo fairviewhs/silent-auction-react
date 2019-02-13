@@ -12,13 +12,20 @@ import httpError from './redux-middleware/http-error/http-error';
 import { composeWithDevTools } from "redux-devtools-extension";
 import { logout } from './actions/login';
 
+const getAuthFromState = (state: any) => {
+  if (!!state.admin.token) {
+    return state.admin.token;
+  }
+  return state.login.token;
+}
+
 const store = createStore(
   reducers,
   composeWithDevTools(
     applyMiddleware(
       // thunk,
       api({
-        getAuthFromState: state => state.login.token
+        getAuthFromState
       }),
       httpError([
         {
