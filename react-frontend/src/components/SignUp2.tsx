@@ -68,7 +68,7 @@ class SignUp extends Component<SignUpProps> {
             <input 
               type="tel" 
               pattern="[0-9]{3}[0-9]{3}[0-9]{4}" 
-              placeholder="xxx-xxx-xxxx" 
+              placeholder="xxxxxxxxxx (Numbers only)" 
               value={phone} 
               onChange={this.handleChange('phone')}
               required
