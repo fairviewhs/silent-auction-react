@@ -128,9 +128,11 @@
     }
 
     .auctionL {
+        border-right: none;
         border-bottom: 1px solid #aaa;
         display: flex;
         flex-direction: column;
+        width: auto;
     }
     
     .auctionR {

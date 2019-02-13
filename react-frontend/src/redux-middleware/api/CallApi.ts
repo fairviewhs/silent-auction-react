@@ -3,8 +3,9 @@ import axios from 'axios';
 import { HTTPMethod } from "./types";
 
 export default (endpoint: string, method: HTTPMethod, mapResponse = (value: any) => value, data: any = undefined, token: string | undefined = undefined) => {
-  const fullUrl = endpoint.includes(API_ROOT) ? endpoint : API_ROOT + endpoint;
-
+  // const fullUrl = endpoint.includes(API_ROOT) ? endpoint : API_ROOT + endpoint;
+  const fullUrl = `${API_ROOT}${endpoint}`;
+  console.log(fullUrl);
   return axios({
     url: fullUrl,
     method,
