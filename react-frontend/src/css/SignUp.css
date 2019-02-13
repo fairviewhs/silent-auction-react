@@ -1,6 +1,7 @@
 .signUp {
     align-items: flex-start;
     display: flex;
+    margin: 0 0 1rem 0;
 }
 
 .signUpInfo {
@@ -62,4 +63,21 @@
 .supporting img {
     max-width: 100%;
     width: 20rem;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .signUp {
+        display: block;
+    }
+
+    .signUpInfo {
+        margin: 0 0 1rem 0;
+    }
+
+    .signUpForm {
+        display: flex;
+        width: auto;
+    }
+
 }
