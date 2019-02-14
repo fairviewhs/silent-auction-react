@@ -43,7 +43,9 @@ textarea {
 
 .appTitleL {
     align-items: center;
+    color: #000;
     display: inline-flex;
+    text-decoration: none;
 }
 
 .appTitleR {
@@ -71,6 +73,7 @@ textarea {
 .appSignOut:hover {
     background: #a81f44;
     color: #fff;
+    cursor: pointer;
 }
 
 .footer {

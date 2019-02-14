@@ -5,3 +5,7 @@ export const RECEIVE_AUCTIONS_SUCCESS = 'auction/REQUEST_AUCTION_SUCCESS';
 export const ADD_AUCTION = 'auction/ADD_AUCTION';
 export const ADD_AUCTION_FAILURE = 'auction/ADD_AUCTION_FAILURE';
 export const ADD_AUCTION_SUCCESS = 'auction/ADD_AUCTION_SUCCESS';
+
+export const EDIT_AUCTION = 'auction/EDIT_AUCTION';
+export const EDIT_AUCTION_FAILURE = 'auction/EDIT_AUCTION_FAILURE';
+export const EDIT_AUCTION_SUCCESS = 'auction/EDIT_AUCTION_SUCCESS';

@@ -54,10 +54,10 @@ class App extends Component<AppProps> {
     return (
       <div className="app">
         <h1 className="appTitle">
-          <div className="appTitleL">
+          <a className="appTitleL" href="/">
             <img src={logo}/>
             Silent Auction
-          </div>
+          </a>
           <div className="appTitleR">
             {
               this.props.isLoggedIn &&
@@ -84,7 +84,7 @@ class App extends Component<AppProps> {
           )} />
         </Switch>
         <div className="footer">
-          Made with ❤️ by <a href="nhsurl">NHS</a> and <a href="wturl">Web Team</a>.
+          Made with ❤️ by <a href="https://nhs.fairviewhs.org/" target="_blank">NHS</a> and <a href="https://about.fairviewhs.org/" target="_blank">Web Team</a>.
         </div>
       </div>
     );

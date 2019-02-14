@@ -44,3 +44,24 @@ export const addAuction = (auction: any) => ({
   tempId: uuid(),
   auction
 })
+
+export const editAuction = (auction: any) => ({
+  [CALL_API] : {
+    types: [
+      AuctionActionTypes.EDIT_AUCTION,
+      AuctionActionTypes.EDIT_AUCTION_SUCCESS,
+      AuctionActionTypes.EDIT_AUCTION_FAILURE
+    ],
+    method: 'POST',
+    endpoint: '/auction/edit/' + auction._id,
+    data: {
+      name: auction.name,
+      start_price: auction.startingPrice,
+      description: auction.description,
+      start_time: auction.startTime,
+      end_time: auction.endTime
+    }
+  },
+  tempId: uuid(),
+  auction
+})
