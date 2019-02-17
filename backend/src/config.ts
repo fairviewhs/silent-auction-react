@@ -1,6 +1,28 @@
 import convict from 'convict';
 
 const config = convict({
+  env: {
+    doc: 'The application environment.',
+    format: ['production', 'development', 'test'],
+    default: 'development',
+    env: 'NODE_ENV'
+  },
+  admin: {
+    email: {
+      doc: 'The admin email to be generated',
+      format: String,
+      default: 'webteam@fairviewhs.org',
+      env: 'ADMIN_EMAIL',
+      sensitive: true
+    },
+    password: {
+      doc: 'The admin password to be generated',
+      format: String,
+      default: 'password',
+      env: 'ADMIN_PASSWORD',
+      sensitive: true
+    }
+  },
   mongodb: {
     doc: 'The uri to the mongo database',
     format: String,

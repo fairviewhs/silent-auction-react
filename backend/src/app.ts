@@ -12,9 +12,11 @@ import bids from './modules/routes/bid';
 import auctions from './modules/routes/auctions';
 import sponsors from './modules/routes/sponsor';
 import admin from './modules/routes/admin';
+import setupAdmin from './setupAdmin';
 
 // Mongoose Setup
 mongoose.connect(config.get('mongodb'), { useNewUrlParser: true });
+setupAdmin();
 
 // Passport setup (authentication)
 passport.use('user', userAuth());
