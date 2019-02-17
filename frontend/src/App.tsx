@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './css/App.css';
 import logo from "./logo.png";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import AuctionList from './containers/AuctionList';
 import SignUp2 from './components/SignUp2';
 import { connect } from 'react-redux';
@@ -54,10 +54,10 @@ class App extends Component<AppProps> {
     return (
       <div className="app">
         <h1 className="appTitle">
-          <a className="appTitleL" href="/">
+          <Link to="/" className="appTitleL">
             <img src={logo}/>
             Silent Auction
-          </a>
+          </Link>
           <div className="appTitleR">
             {
               this.props.isLoggedIn &&
@@ -100,4 +100,4 @@ const mapDispatchToProps = {
   logout
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App) as any);
