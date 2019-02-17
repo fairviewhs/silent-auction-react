@@ -4,6 +4,7 @@ import AdminLogin from './AdminLogin';
 import CreateAuction from './CreateAuction';
 import SponsorForm from './SponsorForm';
 import { fetchAuctions } from '../actions/auction';
+import Results from './Results';
 
 export interface AdminPageProps {
   isLoggedInAdmin: boolean;
