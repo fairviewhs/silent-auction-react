@@ -14,7 +14,7 @@ import sponsors from './modules/routes/sponsor';
 import admin from './modules/routes/admin';
 
 // Mongoose Setup
-mongoose.connect('mongodb://localhost:27017/silent-auction', { useNewUrlParser: true });
+mongoose.connect(config.get('mongodb'), { useNewUrlParser: true });
 
 // Passport setup (authentication)
 passport.use('user', userAuth());
