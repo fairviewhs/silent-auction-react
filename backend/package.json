@@ -47,7 +47,6 @@
     "@types/passport": "^1.0.0",
     "@types/passport-jwt": "^3.0.1",
     "gulp": "^4.0.0",
-    "gulp-run": "^1.7.1",
     "gulp-typescript": "^5.0.0",
     "heroku": "^7.21.0",
     "typescript": "^3.3.3"
