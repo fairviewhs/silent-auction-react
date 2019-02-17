@@ -39,6 +39,7 @@ class AdminPage extends Component<AdminPageProps, any> {
           <Fragment>
             <CreateAuction />
             <SponsorForm />
+            <Results />
           </Fragment>
         }
       </Fragment>

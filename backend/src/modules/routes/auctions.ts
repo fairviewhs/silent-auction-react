@@ -23,15 +23,20 @@ router.get('/', asyncMid(async (req, res) => {
   const rawAuctions = await Auction.find().exec();
   const auctions = await Promise.all(rawAuctions.map(async (auction) => {
     const highestBids = await Bid.find({ auction: auction._id }).sort({ amount: -1 }).limit(1).exec();
-    const highestPrice = highestBids.length > 0 ? highestBids[0].amount : auction.start_price
+    let highestPrice = auction.start_price;
+    let highestBidder = null;
+    if (highestBids.length > 0) {
+      highestPrice = highestBids[0].amount;
+      highestBidder = await User.findOne(highestBids[0].user as any).exec();
+    }
     const sponsors = await Sponsor.find({auctions: auction._id}).exec();
-
     return {
       ...auction.toObject(),
       highestPrice,
-      sponsors
+      sponsors,
+      highestBidder
     }
-  }))
+  })); 
   res.json(auctions);
 }))
 
