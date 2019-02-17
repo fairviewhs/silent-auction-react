@@ -1,5 +1,6 @@
 const { src, dest, watch } = require('gulp');
 const ts = require('gulp-typescript');
+const nodemon = require('gulp-nodemon');
 const tsProject = ts.createProject('tsconfig.json');
 
 const build = () =>
@@ -7,10 +8,17 @@ const build = () =>
     .pipe(tsProject())
     .pipe(dest('dist'));
 
-const watchFiles = () =>
-  watch('./src/**/*.ts', build);
+const watchFiles = done => 
+  nodemon({
+    script: 'dist/app.js', // run ES5 code
+    ext: 'ts',
+    watch: 'src', // watch ES2015 code
+    tasks: ['build'], // compile synchronously onChange
+    done: done,
+    verbose: true
+  });
 
 module.exports = {
   build: build,
-  watch: watchFiles
+  watch: series(build, watchFiles)
 }
