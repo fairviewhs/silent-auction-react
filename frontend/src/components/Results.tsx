@@ -37,14 +37,6 @@ class Results extends Component<ResultsProps> {
         </div>
         {list}
       </div>
-        <div className="resultsRow">
-            <div className="resultsBundle">Bundle Name</div>
-            <div className="resultsBid">Highest Bid</div>
-            <div className="resultsName">Bidder Name</div>
-            <div className="resultsEmail">Bidder Name</div>
-            <div className="resultsPhone">Bidder Name</div>
-        </div>
-      </div>
     );
   }
 }
