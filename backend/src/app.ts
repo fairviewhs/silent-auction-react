@@ -7,7 +7,7 @@ import path from 'path';
 import passport from 'passport';
 import { user as userAuth, admin as adminAuth} from './modules/auth/passport';
 import error from './modules/error/error';
-import auth from './modules/routes/auth';
+import auth from './modules/routes/user';
 import bids from './modules/routes/bid';
 import auctions from './modules/routes/auctions';
 import sponsors from './modules/routes/sponsor';
@@ -32,7 +32,7 @@ app.use(passport.initialize());
 // API Routes
 const apiRoute = express.Router();
 
-apiRoute.use('/auth', auth);
+apiRoute.use('/user', auth);
 apiRoute.use('/auction', auctions);
 apiRoute.use('/bid', bids);
 apiRoute.use('/sponsor', sponsors)

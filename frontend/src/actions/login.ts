@@ -8,7 +8,7 @@ export const login = (name: string, email: string, phone: string) => ({
       LoginActionTypes.RECEIVE_LOGIN,
       LoginActionTypes.FAILURE_LOGIN
     ],
-    endpoint: '/auth/create', // TODO: change backend to login
+    endpoint: '/user/register', // TODO: change backend to login
     method: 'POST',
     data: {
       name,

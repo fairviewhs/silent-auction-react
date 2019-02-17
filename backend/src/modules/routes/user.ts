@@ -18,10 +18,11 @@ export const registerDto = joi.object().keys({
   phone: joi.string().required().length(10)
 }).required();
 
-router.post('/create', validate(registerDto), asyncMid(async (req, res) => {
+router.post('/register', validate(registerDto), asyncMid(async (req, res) => {
   const user = await User.findOne({ email: req.body.email }).exec();
+  console.log(await User.find().exec());
   if (!user) {
-    await registerUser(req.body);
+    return res.json(await registerUser(req.body));
   }
   res.json(await loginUser(req.body));
 }));
