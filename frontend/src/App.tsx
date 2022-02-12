@@ -84,7 +84,7 @@ class App extends Component<AppProps> {
           )} />
         </Switch>
         <div className="footer">
-          Made with ❤️ by <a href="https://nhs.fairviewhs.org/" target="_blank">NHS</a> and <a href="https://about.fairviewhs.org/" target="_blank">Web Team</a>.
+          Made with ❤️ by <a href="https://www.fairviewhs.org/sites/nhs" target="_blank">NHS</a> and <a href="https://www.fairviewhs.org/sites/webteam" target="_blank">Web Team</a>.
         </div>
       </div>
     );
