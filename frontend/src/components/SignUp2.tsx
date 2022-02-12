@@ -36,7 +36,7 @@ class SignUp extends Component<SignUpProps> {
         <div className="signUpInfo">
           <h2>Our Cause</h2>
           <p>
-            This year, Fairview National Honor Society is hosting a silent auction on February 13th and 14th at Fairview High School’s Parent Teacher Conferences to support There With Care, a Boulder-based non-profit which provides resources and care for families of children with a critical illness. 
+            This year, Fairview National Honor Society is hosting a silent auction on February 28th and March 1st to support There With Care, a Boulder-based non-profit which provides resources and care for families of children with a critical illness. 
           </p>
           <a className="supporting" href="https://therewithcare.org/">
             <img src="https://therewithcare.org/wp-content/uploads/2017/01/TWC-logo-retina.png"/>
