@@ -1,8 +1,8 @@
 # Silent Auction
 
-#### Current Authors: Gernene Tan and Kyle Pfromer
+#### Current Authors: Pranav Kadekodi and Edward Wawrzynek
 
-#### Past Authors: Donovan Allen and Jackson Chen
+#### Past Authors: Donovan Allen, Jackson Chen, Kyle Pfromer, Gernene Tan
 
 ## Installing
 
