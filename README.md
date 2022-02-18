@@ -22,6 +22,10 @@ Make sure you have the mongo database running by executing `mongo` in the termin
 Make sure that once you are ready to deploy the backend to heroku (or any server) that you have the environment variables already defined.
 See [the config file](backend/src/config.ts) for information on which environment variables you need to define.
 
+### Adding bundles
+
+Go to the /admin on the website it's deployed to (ex: silentauction.farviewhs.org/admin) and enter in the username and password
+
 ### Additional Information
 
 For more information on the frontend go [here](frontend/README.md).
