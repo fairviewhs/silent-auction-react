@@ -1,4 +1,4 @@
-const { src, dest, watch } = require('gulp');
+const { src, dest, watch, series } = require('gulp');
 const ts = require('gulp-typescript');
 const nodemon = require('gulp-nodemon');
 const tsProject = ts.createProject('tsconfig.json');
