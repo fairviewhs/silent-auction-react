@@ -30,8 +30,8 @@ See [the config file](backend/src/config.ts) for information on which environmen
 - Type in "use database_name" to select the database you want to change 
 - Type in "show collections" to show collections of documents within the database
 - Type in "db.collection_name.find()" to see the all of the documents within the collection
-- Type in "db.collection_name.find({"attribute": "attribute_name"}) to find a specific document by an attribute name
-- Type in "db.collection_name.remove({"attribute": "attribute_name"}) to remove a specific document by an attribute name
+- Type in "db.collection_name.find({"attribute": "attribute_name"})" to find a specific document by an attribute name
+- Type in "db.collection_name.remove({"attribute": "attribute_name"})" to remove a specific document by an attribute name
 
 
 ### Additional Information
