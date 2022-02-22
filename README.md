@@ -32,6 +32,7 @@ See [the config file](backend/src/config.ts) for information on which environmen
 - Type in "db.collection_name.find()" to see the all of the documents within the collection
 - Type in "db.collection_name.find({"attribute": "attribute_name"})" to find a specific document by an attribute name
 - Type in "db.collection_name.remove({"attribute": "attribute_name"})" to remove a specific document by an attribute name
+- Type in "db.auctions.update({"attribute": "attribute_name"}, {$set:{"other_attribute": new_value}})" to select a collection by an attribute and update another attribute with a different value
 
 
 ### Additional Information
