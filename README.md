@@ -24,7 +24,7 @@ See [the config file](backend/src/config.ts) for information on which environmen
 
 ### Using Mongo on the server
 
-- SSH into the deploy server (for farview website server: do ssh your_username@ssh.fairviewhs.org)
+- SSH into the deploy server (for the Fairview website server: do ssh your_username@ssh.fairviewhs.org)
 - Open up the Mongo Shell (type in "mongo" without quotes)
 - Type in "show dbs" to show the databases
 - Type in "use database_name" to select the database you want to change 
@@ -39,3 +39,5 @@ See [the config file](backend/src/config.ts) for information on which environmen
 For more information on the frontend go [here](frontend/README.md).
 
 For more information on the backend go [here](backend/README.md).
+
+For more information on manipulating collections in Mongo go [here](https://docs.mongodb.com/manual/reference/method/js-collection/)
