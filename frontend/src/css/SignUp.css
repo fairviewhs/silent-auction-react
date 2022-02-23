@@ -29,6 +29,7 @@
 
 .signUpForm input[type="text"],
 .signUpForm input[type="email"],
+.signUpForm input[type="password"],
 .signUpForm input[type="tel"] {
     border: 1px solid #aaa;
     border-radius: .5rem;

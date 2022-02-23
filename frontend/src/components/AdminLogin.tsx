@@ -24,7 +24,7 @@ class AdminLogin extends Component<AdminLoginProps, any> {
   public render() {
     const { email, password } = this.state;
     return (
-      <form className="ACPAuctionForm" onSubmit={this.handleSubmit}>
+      <form className="signUpForm" onSubmit={this.handleSubmit}>
         <label>Email:</label>
         <input type="email" placeholder="Email" value={email} onChange={this.handleChange('email')} required/>
         <label>Password:</label>
